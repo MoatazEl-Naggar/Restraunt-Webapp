@@ -1,0 +1,176 @@
+/* App.css */
+.App {
+    text-align: center;
+    margin: 0;
+}
+
+/* home.css */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f00; /* Red */
+    padding: 10px 20px;
+    margin: 0; /* Remove outer space */
+}
+
+.menu-left ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-left ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.menu-left ul li a {
+    text-decoration: none;
+    color: #ff0; /* Yellow */
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    font-family: 'Lato'; /* Change the font */
+    font-weight: bold; /* Make the font bold */
+    text-transform: uppercase; /* Uppercase text */
+}
+
+.menu-left ul li a:hover {
+    background-color: #ff0; /* Yellow on hover */
+    color: #f00; /* Red text on hover */
+}
+
+.logo {
+    flex-grow: 1; /* Grow to take up remaining space */
+    text-align: center; /* Center the logo */
+}
+
+.menu-right {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.menu-right button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff0; /* Yellow */
+    color: #f00; /* Red */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    font-family: 'Arial', sans-serif; /* Change the font */
+    font-weight: bold; /* Make the font bold */
+    text-transform: uppercase; /* Uppercase text */
+}
+
+.menu-right button:first-child {
+    margin-right: 10px; /* Add margin between buttons */
+}
+
+.menu-right button:hover {
+    background-color: #f00; /* Red on hover */
+    color: #ff0; /* Yellow text on hover */
+}
+
+
+.slider-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.slider-container .slick-list {
+    margin: 0;
+    padding: 0;
+}
+
+.slider-container .slick-slider {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.slider-container .slick-slide {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.slider-container img {
+    width: 100%;
+    height: auto;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ff0; /* Yellow */
+}
+
+.hero {
+    background-size: cover;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f00; /* Red */
+    color: #ff0; /* Yellow */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.featured-products,
+.promotions,
+.menu,
+.about,
+.locations,
+.contact {
+    padding: 50px 0;
+    text-align: center;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
