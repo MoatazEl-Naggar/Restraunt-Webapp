@@ -1,5 +1,6 @@
 // home.js
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 import '../css/home.css';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -10,6 +11,48 @@ import promotion3 from '../Images/mighty.jpg';
 import { useTranslation } from 'react-i18next';
 
 function HomePage() {
+    const { t, i18n } = useTranslation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const switchLanguage = () => {
+        const newLanguage = i18n.language === 'en' ? 'ar' : 'en'; // Toggle between 'en' and 'ar'
+        i18n.changeLanguage(newLanguage);
+        console.log('Switched to language:', newLanguage);
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     const settings = {
         dots: true,
         infinite: true,
@@ -20,25 +63,21 @@ function HomePage() {
         autoplaySpeed: 2000,
         pauseOnHover: true,
     };
-    const { t, i18n } = useTranslation();
-    const [key, setKey] = React.useState(0); // Add state for key
-
-    const switchLanguage = (lng) => {
-        i18n.changeLanguage(lng);
-        console.log('Switched to language:', lng);
-        setKey(prevKey => prevKey + 1); // Increment key to force re-render
-    };
 
     return (
-        <div key={key}> {/* Use key prop to force re-render */}
-            {/* Header */}
+        <div className="home-page">
             <header>
                 <div className="menu-left">
-                    <ul>
+                    <ul className={isMenuOpen ? "menu-active" : ""}>
                         <li><a href="#home">{t('translation.home')}</a></li>
                         <li><a href="#menu">{t('translation.menu')}</a></li>
                         <li><a href="#contact">{t('translation.contact')}</a></li>
                     </ul>
+                    {isMobile && (
+                        <button className="menu-toggle" onClick={toggleMenu}>
+                            {isMenuOpen ? "Close Menu" : "Open Menu"}
+                        </button>
+                    )}
                 </div>
                 <div className="logo">
                     {/* Logo image goes here */}
@@ -55,17 +94,16 @@ function HomePage() {
             <div className="slider-container">
                 <Slider {...settings}>
                     <div>
-                        <img src={promotion1} alt="Promotion 1" />
+                        <img src={promotion1} alt="Promotion 1"/>
                     </div>
                     <div>
-                        <img src={promotion2} alt="Promotion 2" />
+                        <img src={promotion2} alt="Promotion 2"/>
                     </div>
                     <div>
-                        <img src={promotion3} alt="Promotion 3" />
+                        <img src={promotion3} alt="Promotion 3"/>
                     </div>
                 </Slider>
             </div>
-
 
             {/* Hero Section */}
             <section className="hero">
